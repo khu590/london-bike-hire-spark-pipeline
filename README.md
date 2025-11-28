@@ -47,6 +47,12 @@ We built an end-to-end Apache Spark (PySpark) pipeline to clean, join, and analy
 
 ---
 
+## Authors
+- Khushi Natraj Bijkal (A00049400)  
+- Mrinal Vattiprolu (A00049723) 
+
+---
+
 ## How to Run
 ```bash
 git clone https://gitlab.computing.dcu.ie/khushi.natrajbijkal2/spark-bike-hire-weather-pipeline.git
