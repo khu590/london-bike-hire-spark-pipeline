@@ -1,4 +1,4 @@
-# Spark Bike Hire–Weather Pipeline (London)
+# Spark Bike Hire-Weather Pipeline (London)
 
 ## Overview
 This project studies how London weather affects TFL daily cycle hires.  
