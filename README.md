@@ -63,3 +63,11 @@ Datasets/                          Datasets used in the pipeline
 Cloud_Project_SparkOnly_Final__1_.ipynb   Main Spark notebook (pipeline + analysis)
 Cloud_Project_Report_Khushi_Mrinal.pdf    Detailed project report
 README.md                          Project documentation
+```
+
+## Contributions
+
+| Name | Email | Key Contributions |
+|------|------|-------------------|
+| Khushi Bijkal | khushi.natrajbijkal2@mail.dcu.ie | Data cleaning, EDA visualisations, feature engineering, interpretation of results, final report |
+| Mrinal Vattiprolu | mrinal.vattiprolu2@mail.dcu.ie | Data preparation, dataset integration, Spark pipeline assistance |
