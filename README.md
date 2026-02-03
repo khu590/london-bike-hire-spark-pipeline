@@ -1,57 +1,65 @@
-# London Bike Hire vs Weather Pipeline (PySpark)
+# London Bike Hire vs Weather Analysis Using Apache Spark (PySpark)
 
-An end-to-end **Apache Spark (PySpark)** pipeline that combines London weather data with **TfL daily bike hire** records to understand how weather influences cycling demand.
+## Overview
+This project studies how London weather affects TfL daily cycle hires.
 
----
-
-## Highlights
-- Built a full pipeline: ingestion → cleaning → joining → feature engineering → analysis → visualization
-- Engineered features like `rain_flag`, `is_weekend`, `temp_band`, and `feels_like`
-- Produced insights using Spark SQL and Matplotlib
+An end-to-end Apache Spark (PySpark) pipeline was built to clean, join, and analyse weather and bike hire data, followed by visualisation of trends and correlations.
 
 ---
 
-## Problem
-In large cities like London, bike hire usage changes with weather. This project explores how factors such as temperature, rainfall, sunshine, humidity, and wind impact daily bike hires.
+## Datasets
+
+- **London Weather (1979–2023)**  
+  https://www.kaggle.com/code/zongaobian/london-weather-trends-and-forecasts-1979-2023  
+
+- **TfL Daily Cycle Hires (2010–2025)**  
+  https://www.kaggle.com/datasets/belayethossainds/tfl-daily-cycle-hires-data  
+
+**Overlap used for analysis:** 2010–2023 (weather data ends in 2023).
 
 ---
 
-## Pipeline Overview
-1. Ingest CSV datasets into Spark DataFrames  
-2. Clean: standardize dates, handle nulls, convert units, remove outliers  
-3. Join datasets on date (overlap period **2010–2023**)  
-4. Feature engineering:
+## Tools Used
+- Apache Spark (PySpark)  
+- Spark DataFrames / Spark SQL  
+- Matplotlib  
+- Jupyter Notebook  
+
+---
+
+## Pipeline Summary
+
+1. Start Spark session and load both CSV files into DataFrames.  
+2. Clean weather data: standardise dates and handle **1204 null values**  
+   - rainfall & sunshine → 0  
+   - humidity → mean  
+3. Clean cycle hire data: fix date formats and remove outliers using **mean ± 4×std rule**.  
+4. Join datasets on date → final dataset contains **4078 rows**.  
+5. Feature engineering:
    - `year`, `month`, `dayofweek`
    - `is_weekend`
    - `rain_flag`
    - `temp_band`
    - `feels_like`
-5. Analyze and visualize trends using Spark outputs and charts  
+6. Perform correlation analysis and generate Matplotlib visualisations.
 
 ---
 
-## Key Findings
-- Mean temperature is strongly positively correlated with hires (**r ≈ 0.65**)
-- Sunshine hours show a positive relationship (**r ≈ 0.53**)
-- Rainfall has a negative correlation (**r ≈ -0.25**)
-- Clear seasonality: colder months show lower hire volumes
+## Key Results
 
----
+- Temperature vs hires: **r = 0.648** (positive)  
+- Rainfall vs hires: **r = −0.246** (negative)  
+- Sunshine vs hires: **r = 0.532** (positive)  
+- Humidity vs hires: **r = −0.534** (negative)  
 
-## Tech Stack
-- Apache Spark (PySpark)
-- Python
-- Spark SQL
-- Matplotlib
+**Conclusion:** warm and dry days increase bike hires, while rainy or humid conditions reduce demand.
 
 ---
 
 ## Repository Structure
 
 ```text
-data/           Contains dataset instructions or sample files (raw data not included)
-notebooks/      PySpark pipeline and analysis notebooks
-images/         Visualisations used in the README
-reports/        Project report and supporting documents
-README.md       Project overview and documentation
-requirements.txt
+Datasets/                          Datasets used in the pipeline
+Cloud_Project_SparkOnly_Final__1_.ipynb   Main Spark notebook (pipeline + analysis)
+Cloud_Project_Report_Khushi_Mrinal.pdf    Detailed project report
+README.md                          Project documentation
